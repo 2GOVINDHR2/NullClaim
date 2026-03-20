@@ -129,7 +129,7 @@ We chose a web app over mobile for this phase because the admin dashboard is bet
 ## Project structure
  
 ```
-gigshield/
+NullClaim/
 ├── frontend/
 │   └── src/
 │       ├── pages/        — Onboarding, Dashboard, Claims, Admin
