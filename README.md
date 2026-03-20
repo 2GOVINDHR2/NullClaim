@@ -24,7 +24,7 @@ NullClaim is a parametric income insurance platform for food delivery partners o
  
 Here's the flow in plain terms:
  
-A delivery partner signs up, takes 3 minutes to complete onboarding, and pays ₹89/week (less than a cup of coffee at a café). Our system then watches their zone around the clock. The moment rainfall, extreme heat, dangerous AQI levels, or a local disruption crosses a predefined threshold — a claim is automatically created, validated by our fraud detection layer, and the payout hits their UPI wallet. The whole thing happens in under a minute. The worker finds out via a notification. That's it.
+A delivery partner signs up, takes 3 minutes to complete onboarding, and pays a personalised weekly premium calculated by our AI based on their zone, weather exposure, and platform tenure. Our system then watches their zone around the clock. The moment rainfall, extreme heat, dangerous AQI levels, or a local disruption crosses a predefined threshold — a claim is automatically created, validated by our fraud detection layer, and the payout hits their UPI wallet. The whole thing happens in under a minute. The worker finds out via a push notification on their phone. That's it.
  
 ---
  
@@ -52,7 +52,7 @@ We cover income loss only. No health, no accidents, no vehicle repairs — just 
  
 ## How the weekly premium works
  
-Gig workers get paid weekly, so we priced it weekly. A ₹89/week premium isn't a number we pulled from thin air — it comes out of an ML model that looks at three things: how risky the worker's zone historically is (flood-prone areas cost more), how much weather exposure they face based on seasonal forecasts, and how long they've been on the platform (longer tenure gets a small loyalty discount).
+Gig workers get paid weekly, so we priced it weekly. The premium isn't a fixed number — it comes out of an ML model that looks at three things: how risky the worker's zone historically is (flood-prone areas cost more), how much weather exposure they face based on seasonal forecasts, and how long they've been on the platform (longer tenure gets a small loyalty discount).
  
 The range is ₹49–₹149/week depending on these factors. Maximum coverage is ₹3,500/week — roughly 5 working days at average earnings.
  
@@ -81,7 +81,7 @@ The system polls weather and AQI APIs every 15 minutes. When a threshold is cros
  
 We use three models, each doing a specific job:
  
-**Premium calculator (XGBoost)** — takes in the worker's zone, their activity history, weather exposure for their area, and platform tenure, and spits out a weekly premium. This is what makes pricing fair and zone-specific rather than one-size-fits-all.
+**Premium calculator (XGBoost)** — takes in the worker's zone, their activity history, weather exposure for their area, and platform tenure, and spits out a personalised weekly premium. This is what makes pricing fair and zone-specific rather than one-size-fits-all.
  
 **Risk profiler (Random Forest)** — runs at onboarding to bucket the worker into Low, Medium, or High risk. This feeds into the premium calculator and also helps the system decide how closely to monitor that worker's zone.
  
@@ -95,7 +95,7 @@ Since we don't have historical claim data for a product that doesn't exist yet, 
  
 | Layer | What we're using |
 |---|---|
-| Frontend | React + TailwindCSS |
+| Frontend | React Native + Expo |
 | Backend | FastAPI (Python) |
 | ML | scikit-learn, XGBoost |
 | Database | PostgreSQL |
@@ -104,25 +104,9 @@ Since we don't have historical claim data for a product that doesn't exist yet, 
 | News signals | GNews API |
 | Payments | Razorpay test mode |
 | Scheduler | APScheduler (runs the disruption monitor) |
-| Hosting | Render + Vercel (free tier) |
+| Hosting | Render (backend), Expo Go / TestFlight (mobile app) |
  
-We chose a web app over mobile for this phase because the admin dashboard is better suited to a larger screen, and the worker-facing flows (onboarding, checking policy status) don't need to happen mid-delivery. A mobile app is the natural next step.
- 
----
- 
-## Our 8-day build plan
- 
-| Days | What we're building |
-|---|---|
-| 1–2 | Worker onboarding, database schema, auth |
-| 2–3 | Synthetic data generation + ML model training |
-| 3 | Weekly premium engine + policy creation |
-| 3–4 | Disruption monitor wired to real APIs |
-| 4–5 | Claims engine with auto-trigger logic |
-| 5–6 | Fraud detection layer |
-| 6 | Razorpay mock payout integration |
-| 7 | Worker dashboard + admin dashboard |
-| 8 | Integration, testing, demo recording |
+We chose a mobile app because delivery partners are always on their phones between orders. Onboarding, checking policy status, and receiving payout notifications all happen naturally on mobile. The admin dashboard is accessible via a responsive web view on the same codebase.
  
 ---
  
@@ -130,10 +114,11 @@ We chose a web app over mobile for this phase because the admin dashboard is bet
  
 ```
 NullClaim/
-├── frontend/
+├── mobile/
 │   └── src/
-│       ├── pages/        — Onboarding, Dashboard, Claims, Admin
-│       └── components/   — Shared UI components
+│       ├── screens/      — Onboarding, Dashboard, Claims
+│       ├── components/   — Shared UI components
+│       └── navigation/   — React Navigation stack
 ├── backend/
 │   ├── routers/          — auth, policy, claims, payout
 │   ├── ml/               — premium model, fraud model, data generation
@@ -156,7 +141,6 @@ NullClaim/
  
 ## Demo video
  
- [Watch our Phase 1 demo video](https://www.youtube.com)
+[Watch our Phase 1 demo video](https://youtu.be/yNP4P75QdVM)
  
 ---
-
