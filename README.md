@@ -1,243 +1,160 @@
-# GigShield — AI-Powered Parametric Insurance for Gig Delivery Workers
-
+# NullClaim — Income Protection for Delivery Partners
+ 
 > Guidewire DEVTrails 2026 | Phase 1 Submission
-
+ 
 ---
-
-## The Problem
-
-India's food delivery partners (Swiggy/Zomato) are the backbone of our digital economy. But when a rainstorm hits, a curfew is declared, or AQI spikes to hazardous levels — they simply cannot work. No orders, no income. No safety net.
-
-A delivery partner earning ₹600/day loses ₹1,800–2,400 in a 3-day disruption event. There is currently no financial product designed to protect this loss. GigShield changes that.
-
+ 
+## Why we built this
+ 
+If you've ever ordered food on a rainy day, someone rode through that rain to bring it to you.
+ 
+That delivery partner earns somewhere between ₹400–800 on a good day. But when a storm hits, or the AQI spikes to dangerous levels, or there's a sudden curfew in their zone — they simply can't work. No orders come in. No income. And unlike you or me, they have no sick leave, no salary backup, nothing.
+ 
+We looked at this and thought: this is an insurance problem. A solvable one.
+ 
+The catch is that traditional insurance doesn't work here. You can't ask a delivery partner to fill out a claim form, submit documents, and wait 2 weeks for a payout. By then the moment has passed and the damage is done. What they need is something that watches out for them automatically and puts money in their account the moment something goes wrong — without them having to do anything.
+ 
+That's NullClaim.
+ 
 ---
-
-## Our Solution
-
-**GigShield** is an AI-enabled parametric income insurance platform exclusively for food delivery partners (Zomato/Swiggy). It automatically detects external disruptions, triggers claims without any action from the worker, and credits lost wages instantly — all on a simple weekly subscription model.
-
-No paperwork. No waiting. No rejection for things outside the worker's control.
-
+ 
+## What it actually does
+ 
+NullClaim is a parametric income insurance platform for food delivery partners on Swiggy and Zomato. "Parametric" means payouts are triggered automatically when a real-world parameter — like rainfall crossing 20mm/hr — is detected in the worker's zone. No claims to file. No documents to upload. No waiting.
+ 
+Here's the flow in plain terms:
+ 
+A delivery partner signs up, takes 3 minutes to complete onboarding, and pays ₹89/week (less than a cup of coffee at a café). Our system then watches their zone around the clock. The moment rainfall, extreme heat, dangerous AQI levels, or a local disruption crosses a predefined threshold — a claim is automatically created, validated by our fraud detection layer, and the payout hits their UPI wallet. The whole thing happens in under a minute. The worker finds out via a notification. That's it.
+ 
 ---
-
-## Persona
-
-**Target User:** Food delivery partners operating on Zomato and Swiggy in Tier-1 Indian cities (Bengaluru, Mumbai, Chennai, Hyderabad).
-
-**Typical profile:**
-- Earns ₹400–800/day depending on zone and hours
-- Works 6–10 hours/day, 6 days/week
-- Paid weekly by the platform
-- Has no access to formal insurance or income protection products
-- Highly sensitive to weather, local events, and zone-level disruptions
-
-**Sample scenarios our platform covers:**
-
-| Scenario | Disruption | Income Impact | GigShield Response |
-|---|---|---|---|
-| Heavy monsoon in Koramangala | Rainfall > 25mm/hr | 0 orders for 4 hours | Auto-payout ₹240 |
-| AQI hits 320 in Delhi | Hazardous air quality | Worker stops riding | Auto-payout ₹150/hr |
-| Local bandh in HSR Layout | Zone closure | Full day lost | Auto-payout ₹600 |
-| Extreme heat > 43°C | Outdoor work halted | Partial day lost | Auto-payout ₹180 |
-
+ 
+## Who we built this for
+ 
+We focused specifically on food delivery partners — Swiggy and Zomato riders — operating in Tier-1 Indian cities. Here's a realistic picture of who they are:
+ 
+A typical partner earns ₹500–700/day, works 6–10 hours, and has been on the platform for less than a year. They're paid weekly by the platform. They own their bike but have no financial cushion — a 3-day disruption like the monsoon hitting hard can wipe out ₹1,500–2,000 from their monthly income with no recourse.
+ 
+These aren't edge cases. Bengaluru alone sees 60+ heavy rainfall days a year. During each one, thousands of delivery partners lose income they can never recover.
+ 
+**Scenarios NullClaim covers:**
+ 
+| What happened | Trigger | What the partner gets |
+|---|---|---|
+| Heavy rain in Koramangala | Rainfall > 20mm/hr | ₹150 for every idle hour |
+| Dangerous AQI in their zone | AQI > 300 | ₹120 for every idle hour |
+| Extreme heat wave | Temperature > 42°C | ₹100 for every idle hour |
+| IMD issues flood red alert | Zone-level flood alert | ₹600 flat for the day |
+| Local curfew or bandh | News signal detected in zone | ₹600 flat for the day |
+ 
+We cover income loss only. No health, no accidents, no vehicle repairs — just the money they would have earned if they could work.
+ 
 ---
-
-## Coverage Scope
-
-GigShield covers **income loss only** from the following parametric triggers:
-
-- Extreme weather (rainfall, heat, flooding)
-- Severe air pollution (AQI > 300)
-- Social disruptions (curfews, strikes, zone closures)
-- Platform-level outages causing order volume collapse
-
-**Strictly excluded:** health insurance, accident cover, vehicle repair, life insurance.
-
+ 
+## How the weekly premium works
+ 
+Gig workers get paid weekly, so we priced it weekly. A ₹89/week premium isn't a number we pulled from thin air — it comes out of an ML model that looks at three things: how risky the worker's zone historically is (flood-prone areas cost more), how much weather exposure they face based on seasonal forecasts, and how long they've been on the platform (longer tenure gets a small loyalty discount).
+ 
+The range is ₹49–₹149/week depending on these factors. Maximum coverage is ₹3,500/week — roughly 5 working days at average earnings.
+ 
+The premium gets auto-deducted from their platform wallet every Monday. No bank account needed, no UPI setup headache.
+ 
 ---
-
-## Weekly Premium Model
-
-Gig workers are paid weekly. Our premium model mirrors this cycle.
-
-**Base weekly premium: ₹49–₹149/week** depending on risk profile.
-
-Premium is dynamically calculated by our ML model using:
-
-```
-Weekly Premium = Base Rate
-              + Zone Risk Score (historical disruption frequency)
-              + Weather Exposure Index (seasonal forecast)
-              + Worker Activity Score (hours worked, zone coverage)
-              + Platform Tenure Adjustment (loyalty discount)
-```
-
-**Example:**
-- Worker in low-risk zone, 3+ months on platform → ₹49/week
-- Worker in flood-prone zone, new to platform → ₹119/week
-- Maximum coverage: ₹3,500/week (~5 days × ₹700/day)
-
-Weekly auto-deduction from platform wallet at the start of each work week.
-
+ 
+## The triggers that fire claims
+ 
+These are the exact thresholds our system monitors:
+ 
+| Trigger | Threshold | Payout |
+|---|---|---|
+| Rainfall | > 20mm/hr in worker's zone | ₹150/hr idle |
+| Extreme heat | Temperature > 42°C | ₹100/hr idle |
+| Air quality | AQI > 300 (Hazardous) | ₹120/hr idle |
+| Flood alert | IMD red alert in zone | ₹600/day flat |
+| Curfew or bandh | Detected via news signals | ₹600/day flat |
+| Platform outage | Order volume drops > 70% in zone | ₹200/hr idle |
+ 
+The system polls weather and AQI APIs every 15 minutes. When a threshold is crossed, it doesn't just trigger one claim — it identifies every active policy holder in that zone and fires claims for all of them simultaneously.
+ 
 ---
-
-## Parametric Triggers
-
-Claims are initiated **automatically** when a monitored parameter crosses a defined threshold. The worker does not need to file anything.
-
-| Trigger         |          Threshold               |   Payout     |
-| Rainfall        | > 20mm/hr in worker's zone       | ₹150/hr idle |
-| Extreme heat    | Temperature > 42°C               | ₹100/hr idle |
-| Air quality     | AQI > 300 (Hazardous)            | ₹120/hr idle |
-| Flood alert     | IMD red alert in zone            | ₹600/day flat |
-| Curfew / bandh  | Detected via news signals in zone| ₹600/day flat |
-| Platform outage | Order volume drop > 70% in zone  | ₹200/hr idle |
-
+ 
+## How the AI fits in
+ 
+We use three models, each doing a specific job:
+ 
+**Premium calculator (XGBoost)** — takes in the worker's zone, their activity history, weather exposure for their area, and platform tenure, and spits out a weekly premium. This is what makes pricing fair and zone-specific rather than one-size-fits-all.
+ 
+**Risk profiler (Random Forest)** — runs at onboarding to bucket the worker into Low, Medium, or High risk. This feeds into the premium calculator and also helps the system decide how closely to monitor that worker's zone.
+ 
+**Fraud detector (Isolation Forest)** — this is our differentiator. Every claim gets run through this before payout. It checks whether the worker's GPS was actually idle during the disruption window, whether other workers in the same zone also got claims (genuine disruptions affect everyone, fake ones don't), and whether the claim pattern matches anything suspicious in their history. It flags anomalies automatically.
+ 
+Since we don't have historical claim data for a product that doesn't exist yet, we trained the models on synthetic data — 5,000 worker profiles generated using domain rules, anchored with real historical weather data from Open-Meteo for Bengaluru and Mumbai over the past 12 months. This is standard practice in actuarial modeling for new insurance products.
+ 
 ---
-
-## Application Workflow
-
-```
-Worker Onboards
-      ↓
-Risk Profile Generated (ML model scores zone + history)
-      ↓
-Weekly Policy Created (premium deducted from wallet)
-      ↓
-Disruption Monitor runs every 15 minutes
-      ↓
-Trigger threshold crossed → Claim auto-initiated
-      ↓
-Fraud Detection layer validates claim
-      ↓
-Claim approved → Instant payout via UPI/wallet
-      ↓
-Worker dashboard updated with earnings protected
-```
-
----
-
-## AI/ML Integration
-
-### 1. Dynamic Premium Calculation
-**Model:** XGBoost Regressor
-**Features:** zone risk score, historical disruption frequency, weather exposure index, worker activity score, platform tenure
-**Training data:** Synthetic dataset of 5,000 worker profiles seeded with real historical weather data from Open-Meteo API (Bengaluru/Mumbai, 12 months)
-**Output:** Weekly premium in ₹
-
-### 2. Risk Profiling
-**Model:** Logistic Regression / Random Forest classifier
-**Purpose:** Assigns each worker a risk tier (Low / Medium / High) at onboarding based on their operating zone, time of day patterns, and historical disruption data for that zone
-**Output:** Risk score 0–1, mapped to premium tier
-
-### 3. Fraud Detection (our differentiator)
-**Model:** Isolation Forest (unsupervised anomaly detection)
-
-We implement a multi-layer fraud detection system:
-
-**Layer 1 — Behavioral fingerprinting:** Each worker builds a movement and activity profile over time. Claims are cross-checked against this baseline. A worker who is always active 8am–6pm but suddenly claims disruption at 2pm triggers a review flag.
-
-**Layer 2 — Zone-level claim correlation:** If a worker claims disruption but no other worker in the same zone filed a claim for the same event, the claim is flagged for review. Genuine disruptions affect multiple workers simultaneously.
-
-**Layer 3 — GPS idle validation:** Worker's device GPS must show idle or minimal movement during the claimed disruption window. Active movement during a "rainstorm" claim is flagged.
-
-**Layer 4 (architected):** Graph-based collusion detection using NetworkX — identifies clusters of workers filing correlated suspicious claims. Planned for post-hackathon deployment.
-
----
-
-## Platform Choice
-
-**Web application** (React frontend + FastAPI backend)
-
-Rationale:
-- Delivery partners access administrative functions (policy management, claim history) from home on a browser, not mid-delivery
-- Admin/insurer dashboard is better suited to a larger screen
-- Faster to build and demo within the 8-day hackathon timeline
-- Future mobile app (React Native) planned for Phase 2
-
----
-
-## Tech Stack
-
-| Layer            | Technology |
-| Frontend         | React + TailwindCSS |
-| Backend          | FastAPI (Python) |
-| ML Models        | scikit-learn, XGBoost |
-| Database         | PostgreSQL |
-| Weather API      | OpenWeatherMap (free tier) + Open-Meteo (historical) |
-| AQI API             | OpenAQ |
-| News/social signals | GNews API |
-| Mock payout         | Razorpay Test Mode |
-| Task scheduler      | APScheduler (disruption monitor polling) |
-| Hosting             | Render / Railway (free tier) |
-
----
-
-## Data Strategy
-
-We use a **hybrid data approach** — a standard practice for new insurance products where historical claim data does not yet exist:
-
-1. **Real weather data** from Open-Meteo API (12 months, Bengaluru + Mumbai) anchors all disruption signals
-2. **Synthetic worker profiles** (5,000 rows) generated using domain-seeded rules reflecting real gig economy labor patterns
-3. **Fraud labels** injected at 5% rate using known fraud patterns (GPS anomalies, zone mismatches, timing inconsistencies)
-
-This approach is consistent with actuarial modeling practices for new insurance product lines.
-
----
-
-## Development Plan
-
-| Day | Focus |
+ 
+## What we're building on
+ 
+| Layer | What we're using |
 |---|---|
-| 1–2 | Worker onboarding flow, database schema, basic auth |
-| 2–3 | Risk profiling ML model + synthetic data generation |
-| 3 | Weekly premium engine + policy creation |
-| 3–4 | Disruption monitor (OpenWeatherMap + OpenAQ polling) |
-| 4–5 | Claims engine (auto-trigger + approval logic) |
-| 5–6 | Fraud detection (Isolation Forest + GPS validation) |
-| 6 | Mock payout integration (Razorpay test mode) |
-| 7 | Worker dashboard + admin dashboard |
-| 8 | Integration testing, demo recording, README polish |
-
+| Frontend | React + TailwindCSS |
+| Backend | FastAPI (Python) |
+| ML | scikit-learn, XGBoost |
+| Database | PostgreSQL |
+| Weather | OpenWeatherMap + Open-Meteo |
+| AQI | OpenAQ |
+| News signals | GNews API |
+| Payments | Razorpay test mode |
+| Scheduler | APScheduler (runs the disruption monitor) |
+| Hosting | Render + Vercel (free tier) |
+ 
+We chose a web app over mobile for this phase because the admin dashboard is better suited to a larger screen, and the worker-facing flows (onboarding, checking policy status) don't need to happen mid-delivery. A mobile app is the natural next step.
+ 
 ---
-
-## Repository Structure
-
+ 
+## Our 8-day build plan
+ 
+| Days | What we're building |
+|---|---|
+| 1–2 | Worker onboarding, database schema, auth |
+| 2–3 | Synthetic data generation + ML model training |
+| 3 | Weekly premium engine + policy creation |
+| 3–4 | Disruption monitor wired to real APIs |
+| 4–5 | Claims engine with auto-trigger logic |
+| 5–6 | Fraud detection layer |
+| 6 | Razorpay mock payout integration |
+| 7 | Worker dashboard + admin dashboard |
+| 8 | Integration, testing, demo recording |
+ 
+---
+ 
+## Project structure
+ 
 ```
 gigshield/
-├── frontend/               # React app
-│   ├── src/
-│   │   ├── pages/          # Onboarding, Dashboard, Claims
-│   │   └── components/
-├── backend/                # FastAPI app
-│   ├── main.py
-│   ├── routers/
-│   │   ├── auth.py
-│   │   ├── policy.py
-│   │   ├── claims.py
-│   │   └── payout.py
-│   ├── ml/
-│   │   ├── premium_model.py
-│   │   ├── fraud_model.py
-│   │   └── data_generation.py
-│   └── scheduler/
-│       └── disruption_monitor.py
+├── frontend/
+│   └── src/
+│       ├── pages/        — Onboarding, Dashboard, Claims, Admin
+│       └── components/   — Shared UI components
+├── backend/
+│   ├── routers/          — auth, policy, claims, payout
+│   ├── ml/               — premium model, fraud model, data generation
+│   └── scheduler/        — disruption monitor (APScheduler)
 ├── data/
 │   └── synthetic_training_data.csv
 └── README.md
 ```
-
+ 
 ---
-
+ 
 ## Team
-
+ 
 > [Add your team member names and roles here]
-
+ 
 ---
-
-## Demo Video
-
+ 
+## Demo video
+ 
 > [Add your 2-minute Phase 1 video link here]
-
+ 
 ---
-
-*Built for Guidewire DEVTrails 2026 | Phase 1 Submission — March 20, 2026*
+ 
+*Guidewire DEVTrails 2026 — Phase 1 Submission, March 20 2026*
