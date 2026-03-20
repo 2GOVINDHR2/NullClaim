@@ -147,14 +147,16 @@ NullClaim/
  
 ## Team
  
-> [Add your team member names and roles here]
+- Govindh R
+- Abhinav G Nair
+- Meenakshi
+- Jaith Jayan
  
 ---
  
 ## Demo video
  
-> [Add your 2-minute Phase 1 video link here]
+ [Watch our Phase 1 demo video](https://www.youtube.com)
  
 ---
- 
-*Guidewire DEVTrails 2026 — Phase 1 Submission, March 20 2026*
+
